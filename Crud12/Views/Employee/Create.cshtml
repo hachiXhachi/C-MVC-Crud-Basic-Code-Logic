@@ -1,0 +1,17 @@
+﻿@model Employee
+<h1>
+    Add new Employee
+</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+           <input class="form-control" asp-for="Name" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Age"></label>
+           <input class="form-control" asp-for="Age" />
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>

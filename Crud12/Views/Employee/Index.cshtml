@@ -1,0 +1,31 @@
+﻿@model List<Employee>
+
+<div class="container row">
+    <div class="col">
+        <h1>Employee List</h1>
+    </div>
+    <div class="col-1">
+        <a class="btn btn-primary" asp-contoller="Employee" asp-action="create">Add</a>
+    </div>
+</div>
+<table class="table table-stripped">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var items in Model)
+    {
+        <tr>
+            <td>@items.Name</td>
+      
+            <td>
+                @items.Age
+            </td>
+            <td>
+            <a asp-controller="Employee" asp-action="edit" asp-route-id ="@items.Id">Edit</a> ||
+            <a asp-controller="Employee" asp-action="delete" asp-route-id ="@items.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
