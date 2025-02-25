@@ -1,0 +1,25 @@
+﻿
+@model Salary
+<h1>
+    Add new Department
+</h1>
+
+<form method="post">
+    <div class="mb-3">
+      
+        <label asp-for="salary"></label>
+        <input class="form-control" asp-for="salary" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Department"></label>
+        <input class="form-control" asp-for="Department" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="EmployeeID"></label>
+        <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.EmployeesId">
+            <option disabled selected>Employee ID</option>
+        </select>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>

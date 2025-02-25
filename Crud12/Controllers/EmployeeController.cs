@@ -1,8 +1,11 @@
 ﻿
 using Crud.DataAccess.Data;
+using Crud.DataAccess.Repository;
 using Crud.DataAccess.Repository.IRepository;
 using Crud.Models;
+using Crud.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Crud12.Controllers
 {
@@ -16,6 +19,14 @@ namespace Crud12.Controllers
         public IActionResult Index()
         {
             List<Employee> emp = _unitofwork.empRepo.GetAll().ToList();
+            ViewData["EmployeesId"] = _unitofwork.salaRepo.GetAll()
+                .Select(s => new SelectListItem
+                {
+                    Text = s.Department,
+                    Value = s.EmployeeID.ToString()
+                }).ToList();
+            EmployeeViewModel employeeViewModel = new EmployeeViewModel
+
             return View(emp);
         }
 

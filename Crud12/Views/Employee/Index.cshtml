@@ -12,6 +12,8 @@
     <tr>
         <th>Name</th>
         <th>Age</th>
+        <th>Employee ID</th>
+        <th>Department</th>
         <th>Action</th>
     </tr>
     @foreach(var items in Model)
@@ -22,7 +24,16 @@
             <td>
                 @items.Age
             </td>
+            <td>@items.EmployeeID</td>
             <td>
+                @{
+                    var employeeList = ViewBag.EmployeesId as IEnumerable<SelectListItem>;
+                    var matchingEmployee = employeeList?.FirstOrDefault(e => e.Value == items.EmployeeID.ToString());
+                }
+                @matchingEmployee?.Text
+            </td>
+            <td>
+            
             <a asp-controller="Employee" asp-action="edit" asp-route-id ="@items.Id">Edit</a> ||
             <a asp-controller="Employee" asp-action="delete" asp-route-id ="@items.Id">Delete</a>
             </td>

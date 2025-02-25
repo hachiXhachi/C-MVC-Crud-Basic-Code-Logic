@@ -12,10 +12,14 @@ namespace Crud.DataAccess.Repository
     {
         private ApplicationDbContext _db;
         public IEmployee empRepo { get; private set; }
+
+        public ISalaryRepository salaRepo { get; private set; }
+
         public UnitofWork(ApplicationDbContext db)
         {
             _db = db;
             empRepo = new EmployeeRepository(_db);
+            salaRepo = new SalaryRepository(_db);
         }
        
 

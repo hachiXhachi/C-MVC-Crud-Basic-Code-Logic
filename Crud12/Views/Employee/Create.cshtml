@@ -1,16 +1,20 @@
-﻿@model Employee
+﻿@model EmployeeViewModel
 <h1>
     Add new Employee
 </h1>
 
 <form method="post">
     <div class="mb-3">
-        <label asp-for="Name"></label>
-           <input class="form-control" asp-for="Name" />
+        <label asp-for="emp.Name"></label>
+        <input class="form-control" asp-for="emp.Name" />
     </div>
     <div class="mb-3">
-        <label asp-for="Age"></label>
-           <input class="form-control" asp-for="Age" />
+        <label asp-for="EmployeeID"></label>
+        <input class="form-control" asp-for="EmployeeID" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="emp.Age"></label>
+        <input class="form-control" asp-for="emp.Age" />
     </div>
     <div asp-validation-summary="All" class="text-danger"></div>
     <button class="btn btn-primary" type="submit">Add</button>

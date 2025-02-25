@@ -1,0 +1,37 @@
+﻿@model List<Salary>
+
+
+<div class="container row">
+    <div class="col">
+        <h1>Employee List</h1>
+    </div>
+    <div class="col-1">
+        <a class="btn btn-primary" asp-contoller="Employee" asp-action="create">Add</a>
+    </div>
+</div>
+<table class="table table-stripped">
+    <tr>
+        <th>ID</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Action</th>
+    </tr>
+    @foreach(var items in Model)
+    {
+        <tr>
+            <td>@items.Id</td>
+      
+            <td>
+                @items.Department
+            </td>
+
+            <td>
+                @items.salary
+            </td>
+            <td>
+                <a asp-controller="Salary" asp-action="edit" asp-route-id="@items.Id">Edit</a> ||
+                <a asp-controller="Salary" asp-action="delete" asp-route-id="@items.Id">delete</a>
+            </td>
+        </tr>
+    }
+</table>

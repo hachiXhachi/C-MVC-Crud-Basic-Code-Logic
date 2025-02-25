@@ -3,6 +3,7 @@ using Crud.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Crud.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250225051648_addSalarytbl")]
+    partial class addSalarytbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,9 +35,6 @@ namespace Crud.DataAccess.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -48,7 +48,6 @@ namespace Crud.DataAccess.Migrations
                         {
                             Id = 1,
                             Age = 22,
-                            EmployeeID = 1,
                             Name = "Jian"
                         });
                 });
@@ -65,15 +64,10 @@ namespace Crud.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
-
                     b.Property<int>("salary")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EmployeeID");
 
                     b.ToTable("sal");
 
@@ -82,20 +76,8 @@ namespace Crud.DataAccess.Migrations
                         {
                             Id = 1,
                             Department = "Accounting",
-                            EmployeeID = 1,
                             salary = 18000
                         });
-                });
-
-            modelBuilder.Entity("Crud.Models.Salary", b =>
-                {
-                    b.HasOne("Crud.Models.Employee", "employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("employee");
                 });
 #pragma warning restore 612, 618
         }
